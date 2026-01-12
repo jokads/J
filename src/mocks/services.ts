@@ -1,0 +1,784 @@
+export interface Service {
+  id: string;
+  title: string;
+  description: string;
+  price: number;
+  category: string;
+  icon: string;
+  features: string[];
+  is_free: boolean;
+  is_featured: boolean;
+  image_url: string;
+}
+
+export const servicesMock: Service[] = [
+  // 🔥 3 SERVIÇOS PRINCIPAIS EM DESTAQUE
+  {
+    id: 'srv1',
+    title: 'Criação de Sites Profissionais',
+    description: 'Desenvolvimento completo de sites modernos e responsivos com design personalizado, otimização SEO e integração com sistemas de pagamento.',
+    price: 499,
+    category: 'Web Development',
+    icon: 'ri-code-s-slash-line',
+    features: [
+      'Design 100% Personalizado',
+      'Responsivo (Mobile, Tablet, Desktop)',
+      'Otimização SEO Avançada',
+      'Integração com Pagamentos',
+      'Painel de Administração',
+      'Suporte Técnico 3 Meses',
+      'Hospedagem Grátis 1 Ano'
+    ],
+    is_free: false,
+    is_featured: true,
+    image_url: 'https://readdy.ai/api/search-image?query=modern%20website%20development%20coding%20on%20multiple%20screens%20professional%20web%20design%20workspace%20dark%20theme&width=800&height=600&seq=srv1&orientation=landscape'
+  },
+  {
+    id: 'srv2',
+    title: 'Bot de Trading MT5 Avançado',
+    description: 'Bot de trading automatizado para MetaTrader 5 com estratégias avançadas, gestão de risco e análise técnica em tempo real. EM DESENVOLVIMENTO.',
+    price: 0,
+    category: 'Trading',
+    icon: 'ri-robot-line',
+    features: [
+      '🚧 EM DESENVOLVIMENTO',
+      'Estratégias Avançadas de Trading',
+      'Gestão Automática de Risco',
+      'Análise Técnica em Tempo Real',
+      'Backtesting Completo',
+      'Suporte Multi-Pares',
+      'Notificações em Tempo Real',
+      'Atualizações Vitalícias'
+    ],
+    is_free: true,
+    is_featured: true,
+    image_url: 'https://readdy.ai/api/search-image?query=metatrader%205%20trading%20bot%20automated%20forex%20trading%20charts%20graphs%20dark%20background%20professional&width=800&height=600&seq=srv2&orientation=landscape'
+  },
+  {
+    id: 'srv3',
+    title: 'Edição de Sites Existentes',
+    description: 'Atualização e modernização de sites existentes com melhorias de design, performance, SEO e novas funcionalidades.',
+    price: 199,
+    category: 'Web Development',
+    icon: 'ri-edit-line',
+    features: [
+      'Análise Completa do Site',
+      'Melhorias de Design',
+      'Otimização de Performance',
+      'Correção de Bugs',
+      'Novas Funcionalidades',
+      'Atualização de Conteúdo',
+      'Suporte Técnico 1 Mês'
+    ],
+    is_free: false,
+    is_featured: true,
+    image_url: 'https://readdy.ai/api/search-image?query=website%20editing%20code%20editor%20multiple%20monitors%20web%20development%20workspace%20modern%20dark%20theme&width=800&height=600&seq=srv3&orientation=landscape'
+  },
+
+  // 🔥 MAIS 37 SERVIÇOS ADICIONAIS (Total de 40)
+  {
+    id: 'srv4',
+    title: 'Desenvolvimento de Apps Mobile',
+    description: 'Criação de aplicativos nativos para iOS e Android com design moderno e funcionalidades avançadas.',
+    price: 799,
+    category: 'Mobile Development',
+    icon: 'ri-smartphone-line',
+    features: [
+      'Apps Nativos iOS e Android',
+      'Design Personalizado',
+      'Integração com APIs',
+      'Notificações Push',
+      'Publicação nas Lojas',
+      'Suporte 6 Meses'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=mobile%20app%20development%20smartphone%20screens%20ios%20android%20dark%20background&width=800&height=600&seq=srv4&orientation=landscape'
+  },
+  {
+    id: 'srv5',
+    title: 'Sistemas de E-commerce',
+    description: 'Desenvolvimento de lojas online completas com carrinho, pagamentos, gestão de produtos e painel administrativo.',
+    price: 699,
+    category: 'E-commerce',
+    icon: 'ri-shopping-cart-line',
+    features: [
+      'Loja Online Completa',
+      'Carrinho de Compras',
+      'Múltiplos Métodos de Pagamento',
+      'Gestão de Produtos',
+      'Painel Administrativo',
+      'Integração com Correios',
+      'Suporte 6 Meses'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=ecommerce%20online%20store%20shopping%20cart%20payment%20system%20dark%20background&width=800&height=600&seq=srv5&orientation=landscape'
+  },
+  {
+    id: 'srv6',
+    title: 'Automação com Python',
+    description: 'Desenvolvimento de scripts e sistemas de automação em Python para otimizar processos e tarefas repetitivas.',
+    price: 149,
+    category: 'Automation',
+    icon: 'ri-terminal-box-line',
+    features: [
+      'Scripts Personalizados',
+      'Automação de Tarefas',
+      'Web Scraping',
+      'Processamento de Dados',
+      'Integração com APIs',
+      'Documentação Completa'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=python%20programming%20automation%20code%20terminal%20dark%20background&width=800&height=600&seq=srv6&orientation=landscape'
+  },
+  {
+    id: 'srv7',
+    title: 'Design de Logos e Identidade Visual',
+    description: 'Criação de logos profissionais e identidade visual completa para sua marca.',
+    price: 99,
+    category: 'Design',
+    icon: 'ri-palette-line',
+    features: [
+      'Logo Profissional',
+      '3 Conceitos Iniciais',
+      'Revisões Ilimitadas',
+      'Arquivos em Alta Resolução',
+      'Manual de Identidade Visual',
+      'Entrega em 7 Dias'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=logo%20design%20graphic%20design%20workspace%20branding%20identity%20dark%20background&width=800&height=600&seq=srv7&orientation=landscape'
+  },
+  {
+    id: 'srv8',
+    title: 'Consultoria em Tecnologia',
+    description: 'Consultoria especializada para escolha de tecnologias, arquitetura de sistemas e melhores práticas.',
+    price: 0,
+    category: 'Consultoria',
+    icon: 'ri-lightbulb-line',
+    features: [
+      'Análise de Necessidades',
+      'Recomendações Técnicas',
+      'Planejamento de Projetos',
+      'Escolha de Tecnologias',
+      'Melhores Práticas',
+      'Sessão de 1 Hora'
+    ],
+    is_free: true,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=technology%20consulting%20meeting%20business%20discussion%20dark%20background&width=800&height=600&seq=srv8&orientation=landscape'
+  },
+  {
+    id: 'srv9',
+    title: 'Análise e Reparo de Celulares Android',
+    description: 'Diagnóstico completo, reparo de hardware e software, e otimização de smartphones Android.',
+    price: 49,
+    category: 'Reparo',
+    icon: 'ri-smartphone-line',
+    features: [
+      'Diagnóstico Completo',
+      'Reparo de Hardware',
+      'Correção de Software',
+      'Otimização de Performance',
+      'Backup de Dados',
+      'Garantia de 30 Dias'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=smartphone%20repair%20android%20phone%20disassembly%20tools%20dark%20background&width=800&height=600&seq=srv9&orientation=landscape'
+  },
+  {
+    id: 'srv10',
+    title: 'Análise e Reparo de Tablets e iPads',
+    description: 'Serviço especializado em diagnóstico e reparo de tablets Android e iPads.',
+    price: 59,
+    category: 'Reparo',
+    icon: 'ri-tablet-line',
+    features: [
+      'Diagnóstico Profissional',
+      'Troca de Tela',
+      'Reparo de Bateria',
+      'Atualização de Software',
+      'Limpeza Interna',
+      'Garantia de 30 Dias'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=tablet%20ipad%20repair%20service%20tools%20dark%20background%20professional&width=800&height=600&seq=srv10&orientation=landscape'
+  },
+  {
+    id: 'srv11',
+    title: 'Instalação de Kali NetHunter',
+    description: 'Instalação e configuração do Kali NetHunter em dispositivos Android compatíveis para testes de segurança.',
+    price: 79,
+    category: 'Segurança',
+    icon: 'ri-shield-keyhole-line',
+    features: [
+      'Verificação de Compatibilidade',
+      'Instalação Completa',
+      'Configuração Inicial',
+      'Ferramentas de Segurança',
+      'Tutorial de Uso',
+      'Suporte Pós-Instalação'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=kali%20nethunter%20android%20hacking%20tools%20security%20testing%20dark%20background&width=800&height=600&seq=srv11&orientation=landscape'
+  },
+  {
+    id: 'srv12',
+    title: 'Criação de USB Bootável Linux',
+    description: 'Criação de pendrives bootáveis com distribuições Linux (Kali, Ubuntu, Mint, etc.) para uso portátil.',
+    price: 29,
+    category: 'Linux',
+    icon: 'ri-usb-line',
+    features: [
+      'Escolha de Distribuição',
+      'USB Bootável Persistente',
+      'Ferramentas Pré-Instaladas',
+      'Configuração Otimizada',
+      'Tutorial de Uso',
+      'Suporte Técnico'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=bootable%20usb%20linux%20kali%20ubuntu%20dark%20background%20hacking%20tools&width=800&height=600&seq=srv12&orientation=landscape'
+  },
+  {
+    id: 'srv13',
+    title: 'Desenvolvimento de Bots Discord',
+    description: 'Criação de bots personalizados para Discord com comandos customizados e funcionalidades avançadas.',
+    price: 129,
+    category: 'Bots',
+    icon: 'ri-discord-line',
+    features: [
+      'Bot Personalizado',
+      'Comandos Customizados',
+      'Moderação Automática',
+      'Sistema de Níveis',
+      'Integração com APIs',
+      'Hospedagem Incluída'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=discord%20bot%20development%20programming%20code%20dark%20background&width=800&height=600&seq=srv13&orientation=landscape'
+  },
+  {
+    id: 'srv14',
+    title: 'Otimização de Performance Web',
+    description: 'Análise e otimização completa de sites para melhorar velocidade, SEO e experiência do usuário.',
+    price: 149,
+    category: 'Web Development',
+    icon: 'ri-speed-line',
+    features: [
+      'Análise de Performance',
+      'Otimização de Imagens',
+      'Minificação de Código',
+      'Cache Avançado',
+      'CDN Setup',
+      'Relatório Detalhado'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=website%20performance%20optimization%20speed%20test%20analytics%20dark%20background&width=800&height=600&seq=srv14&orientation=landscape'
+  },
+  {
+    id: 'srv15',
+    title: 'Integração com APIs',
+    description: 'Desenvolvimento de integrações com APIs de terceiros (pagamentos, redes sociais, CRMs, etc.).',
+    price: 99,
+    category: 'Development',
+    icon: 'ri-plug-line',
+    features: [
+      'Integração com APIs',
+      'Autenticação Segura',
+      'Tratamento de Erros',
+      'Documentação',
+      'Testes Completos',
+      'Suporte 2 Meses'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=api%20integration%20development%20code%20connection%20dark%20background&width=800&height=600&seq=srv15&orientation=landscape'
+  },
+  {
+    id: 'srv16',
+    title: 'Backup e Recuperação de Dados',
+    description: 'Serviço de backup automático e recuperação de dados para PCs, smartphones e servidores.',
+    price: 79,
+    category: 'Suporte',
+    icon: 'ri-hard-drive-2-line',
+    features: [
+      'Backup Automático',
+      'Recuperação de Dados',
+      'Armazenamento em Nuvem',
+      'Criptografia de Dados',
+      'Agendamento Automático',
+      'Suporte 24/7'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=data%20backup%20recovery%20hard%20drive%20cloud%20storage%20dark%20background&width=800&height=600&seq=srv16&orientation=landscape'
+  },
+  {
+    id: 'srv17',
+    title: 'Configuração de Redes e Servidores',
+    description: 'Instalação e configuração de redes locais, servidores e sistemas de segurança.',
+    price: 199,
+    category: 'Infraestrutura',
+    icon: 'ri-server-line',
+    features: [
+      'Configuração de Rede',
+      'Setup de Servidores',
+      'Firewall e Segurança',
+      'VPN Setup',
+      'Monitoramento',
+      'Suporte 3 Meses'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=server%20network%20configuration%20data%20center%20dark%20background&width=800&height=600&seq=srv17&orientation=landscape'
+  },
+  {
+    id: 'srv18',
+    title: 'Análise de Segurança e Pentest',
+    description: 'Teste de penetração e análise de segurança para identificar vulnerabilidades em sistemas e redes.',
+    price: 299,
+    category: 'Segurança',
+    icon: 'ri-bug-line',
+    features: [
+      'Análise de Vulnerabilidades',
+      'Teste de Penetração',
+      'Relatório Detalhado',
+      'Recomendações de Segurança',
+      'Correção de Falhas',
+      'Certificado de Segurança'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=penetration%20testing%20security%20analysis%20hacking%20ethical%20dark%20background&width=800&height=600&seq=srv18&orientation=landscape'
+  },
+  {
+    id: 'srv19',
+    title: 'Treinamento em Programação',
+    description: 'Aulas particulares de programação em Python, JavaScript, HTML/CSS e outras linguagens.',
+    price: 49,
+    category: 'Educação',
+    icon: 'ri-graduation-cap-line',
+    features: [
+      'Aulas Personalizadas',
+      'Projetos Práticos',
+      'Material Didático',
+      'Suporte entre Aulas',
+      'Certificado de Conclusão',
+      'Horários Flexíveis'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=programming%20training%20coding%20lesson%20education%20dark%20background&width=800&height=600&seq=srv19&orientation=landscape'
+  },
+  {
+    id: 'srv20',
+    title: 'Manutenção Preventiva de PCs',
+    description: 'Serviço de manutenção preventiva para manter seu PC funcionando perfeitamente.',
+    price: 39,
+    category: 'Manutenção',
+    icon: 'ri-tools-line',
+    features: [
+      'Limpeza Completa',
+      'Atualização de Drivers',
+      'Otimização de Sistema',
+      'Verificação de Hardware',
+      'Backup de Dados',
+      'Relatório de Saúde'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=pc%20maintenance%20computer%20cleaning%20tools%20dark%20background&width=800&height=600&seq=srv20&orientation=landscape'
+  },
+  // 🔥 MAIS 20 SERVIÇOS ADICIONAIS
+  {
+    id: 'srv21',
+    title: 'Desenvolvimento de Landing Pages',
+    description: 'Criação de páginas de captura otimizadas para conversão com design atrativo e responsivo.',
+    price: 249,
+    category: 'Web Development',
+    icon: 'ri-pages-line',
+    features: [
+      'Design Focado em Conversão',
+      'Formulários Integrados',
+      'Otimização SEO',
+      'Responsivo',
+      'Analytics Integrado',
+      'Entrega em 5 Dias'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=landing%20page%20design%20conversion%20optimization%20marketing%20dark%20background&width=800&height=600&seq=srv21&orientation=landscape'
+  },
+  {
+    id: 'srv22',
+    title: 'Criação de Chatbots IA',
+    description: 'Desenvolvimento de chatbots inteligentes com IA para atendimento automatizado 24/7.',
+    price: 349,
+    category: 'IA',
+    icon: 'ri-chat-4-line',
+    features: [
+      'IA Conversacional',
+      'Integração Multi-Plataforma',
+      'Aprendizado Contínuo',
+      'Respostas Personalizadas',
+      'Analytics de Conversas',
+      'Suporte 3 Meses'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=ai%20chatbot%20artificial%20intelligence%20conversation%20dark%20background&width=800&height=600&seq=srv22&orientation=landscape'
+  },
+  {
+    id: 'srv23',
+    title: 'Migração de Sites',
+    description: 'Migração segura de sites entre servidores ou plataformas sem perda de dados.',
+    price: 129,
+    category: 'Web Development',
+    icon: 'ri-arrow-left-right-line',
+    features: [
+      'Migração Completa',
+      'Zero Downtime',
+      'Backup Completo',
+      'Testes Pós-Migração',
+      'Configuração DNS',
+      'Suporte 1 Mês'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=website%20migration%20server%20transfer%20data%20dark%20background&width=800&height=600&seq=srv23&orientation=landscape'
+  },
+  {
+    id: 'srv24',
+    title: 'Criação de Sistemas CRM',
+    description: 'Desenvolvimento de sistemas de gestão de relacionamento com clientes personalizados.',
+    price: 899,
+    category: 'Business',
+    icon: 'ri-customer-service-line',
+    features: [
+      'Gestão de Clientes',
+      'Pipeline de Vendas',
+      'Automação de Marketing',
+      'Relatórios Avançados',
+      'Integração Email',
+      'Suporte 6 Meses'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=crm%20system%20customer%20management%20business%20software%20dark%20background&width=800&height=600&seq=srv24&orientation=landscape'
+  },
+  {
+    id: 'srv25',
+    title: 'Desenvolvimento de Plugins WordPress',
+    description: 'Criação de plugins personalizados para WordPress com funcionalidades específicas.',
+    price: 179,
+    category: 'WordPress',
+    icon: 'ri-wordpress-line',
+    features: [
+      'Plugin Personalizado',
+      'Compatível com Temas',
+      'Painel de Configuração',
+      'Atualizações Automáticas',
+      'Documentação',
+      'Suporte 2 Meses'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=wordpress%20plugin%20development%20code%20php%20dark%20background&width=800&height=600&seq=srv25&orientation=landscape'
+  },
+  {
+    id: 'srv26',
+    title: 'Criação de Dashboards Analíticos',
+    description: 'Desenvolvimento de painéis de controle com visualização de dados em tempo real.',
+    price: 449,
+    category: 'Data',
+    icon: 'ri-dashboard-line',
+    features: [
+      'Visualização de Dados',
+      'Gráficos Interativos',
+      'Atualização em Tempo Real',
+      'Exportação de Relatórios',
+      'Múltiplas Fontes de Dados',
+      'Suporte 3 Meses'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=analytics%20dashboard%20data%20visualization%20charts%20graphs%20dark%20background&width=800&height=600&seq=srv26&orientation=landscape'
+  },
+  {
+    id: 'srv27',
+    title: 'Configuração de Email Marketing',
+    description: 'Setup completo de plataformas de email marketing com automações e templates.',
+    price: 99,
+    category: 'Marketing',
+    icon: 'ri-mail-send-line',
+    features: [
+      'Configuração de Plataforma',
+      'Templates Personalizados',
+      'Automações de Email',
+      'Segmentação de Listas',
+      'Analytics de Campanhas',
+      'Treinamento Incluído'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=email%20marketing%20automation%20campaign%20newsletter%20dark%20background&width=800&height=600&seq=srv27&orientation=landscape'
+  },
+  {
+    id: 'srv28',
+    title: 'Criação de Sistemas de Reservas',
+    description: 'Desenvolvimento de sistemas de agendamento e reservas online.',
+    price: 399,
+    category: 'Business',
+    icon: 'ri-calendar-check-line',
+    features: [
+      'Agendamento Online',
+      'Gestão de Disponibilidade',
+      'Notificações Automáticas',
+      'Pagamento Integrado',
+      'Calendário Sincronizado',
+      'Suporte 3 Meses'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=booking%20system%20reservation%20calendar%20appointment%20dark%20background&width=800&height=600&seq=srv28&orientation=landscape'
+  },
+  {
+    id: 'srv29',
+    title: 'Otimização de Banco de Dados',
+    description: 'Análise e otimização de performance de bancos de dados SQL e NoSQL.',
+    price: 199,
+    category: 'Database',
+    icon: 'ri-database-line',
+    features: [
+      'Análise de Performance',
+      'Otimização de Queries',
+      'Indexação Inteligente',
+      'Limpeza de Dados',
+      'Backup Automático',
+      'Relatório Detalhado'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=database%20optimization%20sql%20performance%20tuning%20dark%20background&width=800&height=600&seq=srv29&orientation=landscape'
+  },
+  {
+    id: 'srv30',
+    title: 'Criação de Portfolios Online',
+    description: 'Desenvolvimento de portfolios profissionais para artistas, designers e fotógrafos.',
+    price: 299,
+    category: 'Web Development',
+    icon: 'ri-gallery-line',
+    features: [
+      'Design Elegante',
+      'Galeria de Imagens',
+      'Responsivo',
+      'SEO Otimizado',
+      'Formulário de Contato',
+      'Hospedagem 1 Ano'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=portfolio%20website%20design%20gallery%20showcase%20dark%20background&width=800&height=600&seq=srv30&orientation=landscape'
+  },
+  {
+    id: 'srv31',
+    title: 'Desenvolvimento de APIs REST',
+    description: 'Criação de APIs RESTful escaláveis e seguras para aplicações web e mobile.',
+    price: 349,
+    category: 'Development',
+    icon: 'ri-code-box-line',
+    features: [
+      'API RESTful',
+      'Autenticação JWT',
+      'Documentação Swagger',
+      'Rate Limiting',
+      'Versionamento',
+      'Suporte 3 Meses'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=rest%20api%20development%20backend%20code%20json%20dark%20background&width=800&height=600&seq=srv31&orientation=landscape'
+  },
+  {
+    id: 'srv32',
+    title: 'Configuração de SSL e Segurança',
+    description: 'Instalação de certificados SSL e implementação de medidas de segurança web.',
+    price: 79,
+    category: 'Segurança',
+    icon: 'ri-lock-line',
+    features: [
+      'Certificado SSL',
+      'HTTPS Forçado',
+      'Firewall WAF',
+      'Proteção DDoS',
+      'Scan de Vulnerabilidades',
+      'Monitoramento 24/7'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=ssl%20certificate%20security%20https%20encryption%20dark%20background&width=800&height=600&seq=srv32&orientation=landscape'
+  },
+  {
+    id: 'srv33',
+    title: 'Criação de Blogs Profissionais',
+    description: 'Desenvolvimento de blogs otimizados para SEO com design moderno e CMS fácil.',
+    price: 249,
+    category: 'Web Development',
+    icon: 'ri-article-line',
+    features: [
+      'Design Responsivo',
+      'CMS Intuitivo',
+      'SEO Otimizado',
+      'Comentários Integrados',
+      'Newsletter',
+      'Hospedagem 1 Ano'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=professional%20blog%20website%20content%20management%20dark%20background&width=800&height=600&seq=srv33&orientation=landscape'
+  },
+  {
+    id: 'srv34',
+    title: 'Desenvolvimento de PWAs',
+    description: 'Criação de Progressive Web Apps com funcionalidades offline e instaláveis.',
+    price: 599,
+    category: 'Mobile Development',
+    icon: 'ri-smartphone-line',
+    features: [
+      'Funciona Offline',
+      'Instalável',
+      'Push Notifications',
+      'Performance Otimizada',
+      'Responsivo',
+      'Suporte 4 Meses'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=progressive%20web%20app%20pwa%20mobile%20development%20dark%20background&width=800&height=600&seq=srv34&orientation=landscape'
+  },
+  {
+    id: 'srv35',
+    title: 'Criação de Sistemas de Tickets',
+    description: 'Desenvolvimento de sistemas de suporte com gestão de tickets e atendimento.',
+    price: 449,
+    category: 'Business',
+    icon: 'ri-ticket-line',
+    features: [
+      'Gestão de Tickets',
+      'Sistema de Prioridades',
+      'Chat em Tempo Real',
+      'Base de Conhecimento',
+      'Relatórios de Atendimento',
+      'Suporte 3 Meses'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=ticket%20system%20support%20helpdesk%20customer%20service%20dark%20background&width=800&height=600&seq=srv35&orientation=landscape'
+  },
+  {
+    id: 'srv36',
+    title: 'Configuração de CDN',
+    description: 'Setup e configuração de Content Delivery Network para máxima velocidade global.',
+    price: 129,
+    category: 'Performance',
+    icon: 'ri-global-line',
+    features: [
+      'CDN Global',
+      'Cache Inteligente',
+      'Compressão de Arquivos',
+      'SSL Incluído',
+      'Analytics de Tráfego',
+      'Suporte 2 Meses'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=cdn%20content%20delivery%20network%20global%20speed%20dark%20background&width=800&height=600&seq=srv36&orientation=landscape'
+  },
+  {
+    id: 'srv37',
+    title: 'Criação de Quizzes Interativos',
+    description: 'Desenvolvimento de quizzes e questionários interativos para engajamento.',
+    price: 149,
+    category: 'Marketing',
+    icon: 'ri-questionnaire-line',
+    features: [
+      'Quizzes Personalizados',
+      'Resultados Dinâmicos',
+      'Compartilhamento Social',
+      'Analytics Detalhado',
+      'Design Responsivo',
+      'Integração Email'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=interactive%20quiz%20questionnaire%20engagement%20dark%20background&width=800&height=600&seq=srv37&orientation=landscape'
+  },
+  {
+    id: 'srv38',
+    title: 'Desenvolvimento de Extensões Chrome',
+    description: 'Criação de extensões personalizadas para Google Chrome com funcionalidades específicas.',
+    price: 249,
+    category: 'Development',
+    icon: 'ri-chrome-line',
+    features: [
+      'Extensão Personalizada',
+      'Interface Intuitiva',
+      'Sincronização de Dados',
+      'Publicação na Chrome Store',
+      'Atualizações Automáticas',
+      'Suporte 2 Meses'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=chrome%20extension%20development%20browser%20plugin%20dark%20background&width=800&height=600&seq=srv38&orientation=landscape'
+  },
+  {
+    id: 'srv39',
+    title: 'Criação de Calculadoras Online',
+    description: 'Desenvolvimento de calculadoras personalizadas para sites (ROI, orçamentos, etc.).',
+    price: 99,
+    category: 'Web Development',
+    icon: 'ri-calculator-line',
+    features: [
+      'Calculadora Personalizada',
+      'Fórmulas Customizadas',
+      'Design Responsivo',
+      'Exportação de Resultados',
+      'Integração Fácil',
+      'Suporte 1 Mês'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=online%20calculator%20tool%20web%20application%20dark%20background&width=800&height=600&seq=srv39&orientation=landscape'
+  },
+  {
+    id: 'srv40',
+    title: 'Auditoria de Acessibilidade Web',
+    description: 'Análise completa de acessibilidade (WCAG) e implementação de melhorias.',
+    price: 199,
+    category: 'Web Development',
+    icon: 'ri-wheelchair-line',
+    features: [
+      'Auditoria WCAG',
+      'Relatório Detalhado',
+      'Correções Implementadas',
+      'Testes com Leitores de Tela',
+      'Certificação de Conformidade',
+      'Suporte 2 Meses'
+    ],
+    is_free: false,
+    is_featured: false,
+    image_url: 'https://readdy.ai/api/search-image?query=web%20accessibility%20wcag%20compliance%20audit%20dark%20background&width=800&height=600&seq=srv40&orientation=landscape'
+  }
+];

@@ -1,0 +1,677 @@
+export interface News {
+  id: string;
+  title: string;
+  description: string;
+  content: string;
+  category: 'geral';
+  image_url: string;
+  author: string;
+  created_at: string;
+  is_featured: boolean;
+}
+
+export const newsMock: News[] = [
+  // === GERAL (60 notícias) ===
+  {
+    id: 'hw1',
+    title: 'RTX 4070 Eleita Melhor GPU para Gamers',
+    description: 'A NVIDIA RTX 4070 foi eleita a melhor placa gráfica para gaming em 1440p, oferecendo excelente custo-benefício.',
+    content: 'A NVIDIA RTX 4070 continua sendo a escolha favorita dos gamers em 2024, oferecendo performance excepcional em 1440p com DLSS 3 e Ray Tracing.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=nvidia%20rtx%204070%20graphics%20card%20with%20green%20lighting%20gaming%20GPU%20product%20shot%20on%20dark%20background&width=800&height=600&seq=news-hw1&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-15',
+    is_featured: true
+  },
+  {
+    id: 'hw2',
+    title: 'Ryzen 7 7800X3D: O Rei dos Jogos',
+    description: 'O AMD Ryzen 7 7800X3D continua imbatível em gaming graças à tecnologia 3D V-Cache.',
+    content: 'Com a tecnologia 3D V-Cache, o Ryzen 7 7800X3D oferece os melhores FPS em jogos competitivos e AAA.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=amd%20ryzen%207%207800x3d%20processor%20with%20red%20lighting%20gaming%20CPU%20on%20motherboard&width=800&height=600&seq=news-hw2&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-14',
+    is_featured: true
+  },
+  {
+    id: 'hw3',
+    title: 'DDR5 6000MHz: Novo Padrão para Gaming',
+    description: 'Memórias DDR5 6000MHz CL30 se tornaram o novo padrão para PCs gaming.',
+    content: 'As memórias DDR5 6000MHz oferecem o melhor equilíbrio entre performance e preço para AMD e Intel.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=DDR5%20RAM%20memory%20modules%20with%20RGB%20lighting%20high%20speed%20gaming%20memory&width=800&height=600&seq=news-hw3&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-13',
+    is_featured: true
+  },
+  {
+    id: 'hw4',
+    title: 'Intel Core i9-14900K Lançado',
+    description: 'Intel lança novo processador flagship com 24 núcleos e frequências até 6.0 GHz.',
+    content: 'O novo Intel Core i9-14900K promete ser o processador mais rápido para gaming e produtividade.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=intel%20core%20i9%20processor%20with%20blue%20lighting%20high%20end%20CPU&width=800&height=600&seq=news-hw4&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-12',
+    is_featured: false
+  },
+  {
+    id: 'hw5',
+    title: 'SSDs PCIe 5.0 Chegam ao Mercado',
+    description: 'Novos SSDs PCIe 5.0 prometem velocidades de até 14 GB/s.',
+    content: 'Os SSDs PCIe 5.0 representam um salto gigantesco em velocidade de armazenamento.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=PCIe%205.0%20NVMe%20SSD%20high%20speed%20storage%20device&width=800&height=600&seq=news-hw5&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-11',
+    is_featured: false
+  },
+  {
+    id: 'hw6',
+    title: 'RTX 4090 Ti Rumores Confirmados',
+    description: 'NVIDIA confirma desenvolvimento da RTX 4090 Ti com 24GB GDDR6X.',
+    content: 'A RTX 4090 Ti promete ser a placa gráfica mais poderosa já criada.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=nvidia%20rtx%204090%20ti%20graphics%20card%20concept%20art%20futuristic%20GPU&width=800&height=600&seq=news-hw6&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-10',
+    is_featured: false
+  },
+  {
+    id: 'hw7',
+    title: 'Coolers AIO de 360mm em Alta',
+    description: 'Coolers líquidos AIO de 360mm se tornam padrão para CPUs high-end.',
+    content: 'Os coolers AIO de 360mm oferecem refrigeração superior e silenciosa.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=360mm%20AIO%20liquid%20cooler%20with%20RGB%20fans%20water%20cooling%20system&width=800&height=600&seq=news-hw7&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-09',
+    is_featured: false
+  },
+  {
+    id: 'hw8',
+    title: 'Fontes ATX 3.0 Chegam ao Mercado',
+    description: 'Novas fontes ATX 3.0 com conector PCIe 5.0 de 12VHPWR.',
+    content: 'As fontes ATX 3.0 são essenciais para as novas placas gráficas de alta potência.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=ATX%203.0%20power%20supply%20unit%20modular%20PSU&width=800&height=600&seq=news-hw8&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-08',
+    is_featured: false
+  },
+  {
+    id: 'hw9',
+    title: 'Monitores OLED 240Hz Revolucionam Gaming',
+    description: 'Novos monitores OLED com 240Hz e 0.03ms de resposta.',
+    content: 'Os monitores OLED oferecem cores perfeitas e tempo de resposta instantâneo.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=OLED%20gaming%20monitor%20240Hz%20curved%20display&width=800&height=600&seq=news-hw9&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-07',
+    is_featured: false
+  },
+  {
+    id: 'hw10',
+    title: 'Teclados Mecânicos com Switches Magnéticos',
+    description: 'Nova geração de teclados mecânicos usa switches magnéticos Hall Effect.',
+    content: 'Os switches magnéticos oferecem durabilidade infinita e ajuste de ponto de atuação.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=mechanical%20gaming%20keyboard%20with%20magnetic%20switches%20RGB%20lighting&width=800&height=600&seq=news-hw10&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-06',
+    is_featured: false
+  },
+  {
+    id: 'jg1',
+    title: 'Cyberpunk 2077: Phantom Liberty Bate Recordes',
+    description: 'Expansão de Cyberpunk 2077 vende 5 milhões de cópias na primeira semana.',
+    content: 'Phantom Liberty prova que Cyberpunk 2077 se redimiu completamente.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=cyberpunk%202077%20phantom%20liberty%20game%20screenshot%20futuristic%20city&width=800&height=600&seq=news-jg1&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-15',
+    is_featured: false
+  },
+  {
+    id: 'jg2',
+    title: 'GTA 6 Trailer Oficial Revelado',
+    description: 'Rockstar Games finalmente revela o primeiro trailer de GTA 6.',
+    content: 'GTA 6 promete revolucionar os jogos de mundo aberto com gráficos fotorrealistas.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=GTA%206%20game%20screenshot%20miami%20vice%20city%20beach&width=800&height=600&seq=news-jg2&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-14',
+    is_featured: false
+  },
+  {
+    id: 'jg3',
+    title: 'Counter-Strike 2 Atinge 1 Milhão de Jogadores',
+    description: 'CS2 quebra recordes de jogadores simultâneos na Steam.',
+    content: 'Counter-Strike 2 prova que a franquia continua imbatível no cenário competitivo.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=counter%20strike%202%20gameplay%20screenshot%20competitive%20FPS&width=800&height=600&seq=news-jg3&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-13',
+    is_featured: false
+  },
+  {
+    id: 'jg4',
+    title: 'Starfield Recebe Atualização Massiva',
+    description: 'Bethesda lança atualização com melhorias de performance e novos conteúdos.',
+    content: 'A atualização de Starfield traz melhorias significativas de FPS e novas missões.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=starfield%20game%20screenshot%20space%20exploration&width=800&height=600&seq=news-jg4&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-12',
+    is_featured: false
+  },
+  {
+    id: 'jg5',
+    title: 'Baldurs Gate 3 Ganha Prêmio GOTY',
+    description: 'Baldurs Gate 3 é eleito o Jogo do Ano em todas as premiações.',
+    content: 'BG3 redefine o padrão de qualidade para RPGs modernos.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=baldurs%20gate%203%20game%20screenshot%20fantasy%20RPG&width=800&height=600&seq=news-jg5&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-11',
+    is_featured: false
+  },
+  {
+    id: 'jg6',
+    title: 'Valorant Anuncia Novo Agente',
+    description: 'Riot Games revela novo agente com habilidades únicas.',
+    content: 'O novo agente de Valorant promete mudar o meta competitivo.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=valorant%20game%20new%20agent%20character%20design&width=800&height=600&seq=news-jg6&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-10',
+    is_featured: false
+  },
+  {
+    id: 'jg7',
+    title: 'Fortnite Capítulo 5 Lançado',
+    description: 'Epic Games lança novo capítulo com mapa completamente renovado.',
+    content: 'Fortnite Capítulo 5 traz mudanças revolucionárias no gameplay.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=fortnite%20chapter%205%20game%20screenshot%20battle%20royale&width=800&height=600&seq=news-jg7&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-09',
+    is_featured: false
+  },
+  {
+    id: 'jg8',
+    title: 'League of Legends: Novo Campeão Revelado',
+    description: 'Riot Games anuncia novo campeão com mecânicas inovadoras.',
+    content: 'O novo campeão de LoL promete revolucionar a meta do jogo.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=league%20of%20legends%20new%20champion%20character%20art&width=800&height=600&seq=news-jg8&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-08',
+    is_featured: false
+  },
+  {
+    id: 'jg9',
+    title: 'Diablo 4: Temporada 3 Anunciada',
+    description: 'Blizzard revela detalhes da Temporada 3 de Diablo 4.',
+    content: 'A Temporada 3 traz novos itens lendários e melhorias de balance.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=diablo%204%20season%203%20game%20screenshot%20dark%20fantasy&width=800&height=600&seq=news-jg9&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-07',
+    is_featured: false
+  },
+  {
+    id: 'jg10',
+    title: 'Minecraft Atinge 300 Milhões de Cópias',
+    description: 'Minecraft continua crescendo e atinge marca histórica.',
+    content: 'Minecraft prova que é o jogo mais vendido de todos os tempos.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=minecraft%20game%20screenshot%20building%20blocks%20creative&width=800&height=600&seq=news-jg10&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-06',
+    is_featured: false
+  },
+  {
+    id: 'av1',
+    title: 'Review: RTX 4070 Ti Super',
+    description: 'Testamos a nova RTX 4070 Ti Super em mais de 50 jogos.',
+    content: 'A RTX 4070 Ti Super oferece performance excepcional em 1440p e 4K.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=rtx%204070%20ti%20super%20review%20benchmark%20graphs&width=800&height=600&seq=news-av1&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-15',
+    is_featured: false
+  },
+  {
+    id: 'av2',
+    title: 'Review: Ryzen 9 7950X3D',
+    description: 'Análise completa do processador mais poderoso da AMD.',
+    content: 'O Ryzen 9 7950X3D é o melhor processador para gaming e produtividade.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=ryzen%209%207950x3d%20review%20benchmark%20testing&width=800&height=600&seq=news-av2&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-14',
+    is_featured: false
+  },
+  {
+    id: 'av3',
+    title: 'Review: Monitor LG OLED 27GS95QE',
+    description: 'Testamos o monitor OLED de 240Hz da LG.',
+    content: 'O LG OLED 27GS95QE é o melhor monitor para gaming competitivo.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=LG%20OLED%20gaming%20monitor%20review%20240Hz&width=800&height=600&seq=news-av3&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-13',
+    is_featured: false
+  },
+  {
+    id: 'av4',
+    title: 'Review: Corsair iCUE H150i Elite',
+    description: 'Análise do cooler líquido AIO de 360mm da Corsair.',
+    content: 'O Corsair H150i Elite oferece refrigeração silenciosa e eficiente.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=corsair%20icue%20h150i%20elite%20review%20AIO%20cooler&width=800&height=600&seq=news-av4&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-12',
+    is_featured: false
+  },
+  {
+    id: 'av5',
+    title: 'Review: Kingston Fury Renegade DDR5',
+    description: 'Testamos as memórias DDR5 6400MHz da Kingston.',
+    content: 'As Kingston Fury Renegade oferecem performance excepcional.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=kingston%20fury%20renegade%20ddr5%20review%20memory&width=800&height=600&seq=news-av5&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-11',
+    is_featured: false
+  },
+  {
+    id: 'av6',
+    title: 'Review: NZXT H7 Flow',
+    description: 'Análise do gabinete NZXT H7 Flow com excelente airflow.',
+    content: 'O NZXT H7 Flow é o gabinete perfeito para builds high-end.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=nzxt%20h7%20flow%20case%20review%20PC%20tower&width=800&height=600&seq=news-av6&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-10',
+    is_featured: false
+  },
+  {
+    id: 'av7',
+    title: 'Review: Logitech G Pro X Superlight 2',
+    description: 'Testamos o mouse mais leve e preciso da Logitech.',
+    content: 'O G Pro X Superlight 2 é o mouse definitivo para FPS.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=logitech%20g%20pro%20x%20superlight%202%20review%20gaming%20mouse&width=800&height=600&seq=news-av7&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-09',
+    is_featured: false
+  },
+  {
+    id: 'av8',
+    title: 'Review: SteelSeries Apex Pro TKL',
+    description: 'Análise do teclado mecânico com switches ajustáveis.',
+    content: 'O Apex Pro TKL oferece personalização total dos switches.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=steelseries%20apex%20pro%20tkl%20review%20mechanical%20keyboard&width=800&height=600&seq=news-av8&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-08',
+    is_featured: false
+  },
+  {
+    id: 'av9',
+    title: 'Review: Samsung 990 Pro 2TB',
+    description: 'Testamos o SSD NVMe mais rápido da Samsung.',
+    content: 'O Samsung 990 Pro oferece velocidades de até 7450 MB/s.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=samsung%20990%20pro%20review%20nvme%20ssd&width=800&height=600&seq=news-av9&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-07',
+    is_featured: false
+  },
+  {
+    id: 'av10',
+    title: 'Review: ASUS ROG Swift PG27AQDM',
+    description: 'Análise do monitor OLED de 27 polegadas da ASUS.',
+    content: 'O PG27AQDM é o monitor OLED mais completo do mercado.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=asus%20rog%20swift%20pg27aqdm%20review%20oled%20monitor&width=800&height=600&seq=news-av10&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-06',
+    is_featured: false
+  },
+  {
+    id: 'nt1',
+    title: 'NVIDIA Anuncia Arquitetura Blackwell',
+    description: 'NVIDIA revela nova arquitetura para GPUs de próxima geração.',
+    content: 'A arquitetura Blackwell promete dobrar a performance das GPUs atuais.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=nvidia%20blackwell%20architecture%20announcement%20tech%20event&width=800&height=600&seq=news-nt1&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-15',
+    is_featured: false
+  },
+  {
+    id: 'nt2',
+    title: 'AMD Confirma Ryzen 8000 Series',
+    description: 'AMD anuncia nova geração de processadores Zen 5.',
+    content: 'Os processadores Ryzen 8000 trarão melhorias significativas de IPC.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=amd%20ryzen%208000%20series%20announcement%20zen%205&width=800&height=600&seq=news-nt2&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-14',
+    is_featured: false
+  },
+  {
+    id: 'nt3',
+    title: 'Intel Anuncia Arc B-Series',
+    description: 'Intel revela nova linha de placas gráficas Arc.',
+    content: 'As GPUs Arc B-Series prometem competir com RTX 4060 e RX 7600.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=intel%20arc%20b-series%20graphics%20card%20announcement&width=800&height=600&seq=news-nt3&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-13',
+    is_featured: false
+  },
+  {
+    id: 'nt4',
+    title: 'Microsoft Anuncia DirectX 13',
+    description: 'Nova versão do DirectX traz melhorias de performance.',
+    content: 'DirectX 13 promete revolucionar os gráficos em jogos.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=microsoft%20directx%2013%20announcement%20gaming%20graphics&width=800&height=600&seq=news-nt4&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-12',
+    is_featured: false
+  },
+  {
+    id: 'nt5',
+    title: 'Steam Deck 2 Confirmado',
+    description: 'Valve confirma desenvolvimento do Steam Deck 2.',
+    content: 'O Steam Deck 2 terá hardware mais potente e tela OLED.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=steam%20deck%202%20announcement%20handheld%20gaming&width=800&height=600&seq=news-nt5&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-11',
+    is_featured: false
+  },
+  {
+    id: 'nt6',
+    title: 'PlayStation 6 em Desenvolvimento',
+    description: 'Sony confirma que PS6 está em desenvolvimento.',
+    content: 'O PlayStation 6 deve chegar ao mercado em 2027.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=playstation%206%20concept%20design%20next%20gen%20console&width=800&height=600&seq=news-nt6&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-10',
+    is_featured: false
+  },
+  {
+    id: 'nt7',
+    title: 'Xbox Anuncia Novo Console Portátil',
+    description: 'Microsoft revela console portátil para competir com Steam Deck.',
+    content: 'O novo Xbox portátil rodará jogos nativos do Xbox Series.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=xbox%20handheld%20console%20announcement%20portable%20gaming&width=800&height=600&seq=news-nt7&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-09',
+    is_featured: false
+  },
+  {
+    id: 'nt8',
+    title: 'Unreal Engine 6 Anunciado',
+    description: 'Epic Games revela Unreal Engine 6 com gráficos fotorrealistas.',
+    content: 'UE6 promete revolucionar o desenvolvimento de jogos.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=unreal%20engine%206%20announcement%20game%20development&width=800&height=600&seq=news-nt8&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-08',
+    is_featured: false
+  },
+  {
+    id: 'nt9',
+    title: 'Windows 12 Revelado',
+    description: 'Microsoft anuncia Windows 12 com foco em IA.',
+    content: 'Windows 12 terá integração profunda com inteligência artificial.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=windows%2012%20announcement%20microsoft%20operating%20system&width=800&height=600&seq=news-nt9&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-07',
+    is_featured: false
+  },
+  {
+    id: 'nt10',
+    title: 'Meta Anuncia Quest 4',
+    description: 'Meta revela novo headset VR com resolução 4K por olho.',
+    content: 'O Quest 4 promete ser o headset VR mais avançado do mercado.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=meta%20quest%204%20vr%20headset%20announcement%20virtual%20reality&width=800&height=600&seq=news-nt10&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-06',
+    is_featured: false
+  },
+  // 🔥 MAIS 2 NOTÍCIAS NOVAS (Total: 42)
+  {
+    id: 'new1',
+    title: 'JokaTech Lança Serviço de Montagem de PCs Personalizados',
+    description: 'A JokaTech anuncia novo serviço premium de montagem de PCs gaming com garantia estendida e suporte vitalício.',
+    content: 'A JokaTech, loja especializada em hardware gaming, lança oficialmente seu serviço de montagem de PCs personalizados. O serviço inclui montagem profissional pelo fundador Claudio Pereira, testes completos de todos os componentes, cable management profissional e garantia estendida de 2 anos. Os clientes podem escolher cada componente individualmente ou enviar suas próprias peças para montagem.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=custom%20pc%20building%20service%20professional%20assembly%20gaming%20computer%20dark%20background&width=800&height=600&seq=news-new1&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-16',
+    is_featured: true
+  },
+  {
+    id: 'new2',
+    title: 'Black Friday JokaTech: Descontos de até 40% em Hardware Gaming',
+    description: 'A maior promoção do ano chegou! Descontos incríveis em GPUs, CPUs, SSDs e muito mais durante toda a semana.',
+    content: 'A JokaTech anuncia sua maior promoção do ano com descontos de até 40% em componentes de hardware gaming. A Black Friday JokaTech oferece ofertas especiais em placas gráficas NVIDIA e AMD, processadores Intel e AMD, memórias DDR5, SSDs NVMe e periféricos gaming. Além disso, todos os pedidos acima de €100 ganham frete grátis e os clientes VIP recebem descontos adicionais. A promoção é válida enquanto durarem os estoques.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=black%20friday%20gaming%20hardware%20sale%20discount%20promotion%20tech%20store%20dark%20background&width=800&height=600&seq=news-new2&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-16',
+    is_featured: true
+  },
+  // 🔥 ADICIONAR MAIS 18 NOTÍCIAS (Total: 60)
+  {
+    id: 'extra1',
+    title: 'Windows 11 23H2: Melhorias de Performance em Jogos',
+    description: 'Microsoft lança atualização que melhora FPS em até 15% em jogos.',
+    content: 'A atualização Windows 11 23H2 traz otimizações significativas para gaming.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=windows%2011%20gaming%20performance%20update&width=800&height=600&seq=news-extra1&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-17',
+    is_featured: false
+  },
+  {
+    id: 'extra2',
+    title: 'Corsair Lança Nova Linha de Coolers RGB',
+    description: 'Novos coolers com iluminação RGB personalizável e performance superior.',
+    content: 'Corsair apresenta linha iCUE LINK com instalação simplificada.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=corsair%20rgb%20cooler%20new%20release&width=800&height=600&seq=news-extra2&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-17',
+    is_featured: false
+  },
+  {
+    id: 'extra3',
+    title: 'ASUS ROG Ally X: Handheld Gaming Melhorado',
+    description: 'Nova versão do ROG Ally com bateria maior e mais RAM.',
+    content: 'ASUS melhora seu handheld gaming com 24GB RAM e bateria de 80Wh.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=asus%20rog%20ally%20x%20handheld%20gaming&width=800&height=600&seq=news-extra3&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-17',
+    is_featured: false
+  },
+  {
+    id: 'extra4',
+    title: 'Razer Viper V3 Pro: Mouse Mais Leve do Mercado',
+    description: 'Novo mouse wireless de apenas 54g com sensor de 30.000 DPI.',
+    content: 'Razer lança mouse ultra-leve perfeito para FPS competitivo.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=razer%20viper%20v3%20pro%20gaming%20mouse&width=800&height=600&seq=news-extra4&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-17',
+    is_featured: false
+  },
+  {
+    id: 'extra5',
+    title: 'WD Black SN850X: SSD de 4TB Mais Acessível',
+    description: 'Western Digital reduz preço do SSD NVMe de 4TB.',
+    content: 'SSD de alta performance agora mais acessível para gamers.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=wd%20black%20sn850x%204tb%20ssd&width=800&height=600&seq=news-extra5&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-17',
+    is_featured: false
+  },
+  {
+    id: 'extra6',
+    title: 'MSI MAG 321UPX: Monitor QD-OLED 4K 240Hz',
+    description: 'MSI lança monitor OLED perfeito para gaming competitivo.',
+    content: 'Novo monitor combina resolução 4K com taxa de atualização de 240Hz.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=msi%20mag%20321upx%20qd-oled%20monitor&width=800&height=600&seq=news-extra6&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-17',
+    is_featured: false
+  },
+  {
+    id: 'extra7',
+    title: 'Lian Li O11 Vision: Gabinete com Tela LCD',
+    description: 'Novo gabinete premium com tela LCD integrada na lateral.',
+    content: 'Lian Li inova com gabinete que exibe informações do sistema em tela LCD.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=lian%20li%20o11%20vision%20lcd%20case&width=800&height=600&seq=news-extra7&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-17',
+    is_featured: false
+  },
+  {
+    id: 'extra8',
+    title: 'HyperX Cloud Alpha Wireless: 300h de Bateria',
+    description: 'Headset wireless com bateria recorde de 300 horas.',
+    content: 'HyperX estabelece novo padrão de duração de bateria em headsets.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=hyperx%20cloud%20alpha%20wireless%20headset&width=800&height=600&seq=news-extra8&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-17',
+    is_featured: false
+  },
+  {
+    id: 'extra9',
+    title: 'Thermaltake Tower 300: Mini-ITX com Estilo',
+    description: 'Gabinete mini-ITX compacto com design inovador.',
+    content: 'Thermaltake lança gabinete perfeito para builds compactas.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=thermaltake%20tower%20300%20mini-itx%20case&width=800&height=600&seq=news-extra9&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-17',
+    is_featured: false
+  },
+  {
+    id: 'extra10',
+    title: 'EVGA Anuncia Retorno ao Mercado de GPUs',
+    description: 'EVGA confirma volta ao mercado de placas gráficas.',
+    content: 'Após pausa, EVGA planeja retornar com GPUs AMD.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=evga%20graphics%20card%20return%20announcement&width=800&height=600&seq=news-extra10&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-17',
+    is_featured: false
+  },
+  {
+    id: 'extra11',
+    title: 'Fractal Design North XL: Gabinete com Madeira',
+    description: 'Novo gabinete premium com painel frontal em madeira.',
+    content: 'Fractal Design combina elegância e performance em novo gabinete.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=fractal%20design%20north%20xl%20wood%20case&width=800&height=600&seq=news-extra11&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-17',
+    is_featured: false
+  },
+  {
+    id: 'extra12',
+    title: 'Cooler Master V850 SFX: Fonte Compacta Potente',
+    description: 'Nova fonte SFX de 850W para builds mini-ITX.',
+    content: 'Cooler Master lança fonte compacta com alta potência.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=cooler%20master%20v850%20sfx%20power%20supply&width=800&height=600&seq=news-extra12&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-17',
+    is_featured: false
+  },
+  {
+    id: 'extra13',
+    title: 'G.Skill Trident Z5 RGB: DDR5 8000MHz',
+    description: 'Memórias DDR5 mais rápidas do mercado chegam a 8000MHz.',
+    content: 'G.Skill quebra recorde de velocidade com novas memórias DDR5.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=gskill%20trident%20z5%20rgb%20ddr5%208000mhz&width=800&height=600&seq=news-extra13&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-17',
+    is_featured: false
+  },
+  {
+    id: 'extra14',
+    title: 'Seagate FireCuda 540: SSD PCIe 5.0 Acessível',
+    description: 'Seagate lança SSD PCIe 5.0 com preço competitivo.',
+    content: 'Novo SSD torna tecnologia PCIe 5.0 mais acessível.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=seagate%20firecuda%20540%20pcie%205.0%20ssd&width=800&height=600&seq=news-extra14&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-17',
+    is_featured: false
+  },
+  {
+    id: 'extra15',
+    title: 'NZXT Kraken Elite: AIO com Tela LCD 2.36"',
+    description: 'Novo cooler AIO com tela LCD maior e mais brilhante.',
+    content: 'NZXT melhora linha Kraken com tela LCD de alta resolução.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=nzxt%20kraken%20elite%20lcd%20aio%20cooler&width=800&height=600&seq=news-extra15&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-17',
+    is_featured: false
+  },
+  {
+    id: 'extra16',
+    title: 'Gigabyte Aorus FO32U2P: OLED 4K 240Hz',
+    description: 'Gigabyte lança monitor OLED premium para gamers.',
+    content: 'Novo monitor combina tecnologia OLED com alta taxa de atualização.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=gigabyte%20aorus%20fo32u2p%20oled%20monitor&width=800&height=600&seq=news-extra16&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-17',
+    is_featured: false
+  },
+  {
+    id: 'extra17',
+    title: 'be quiet! Dark Rock Elite: Cooler Silencioso',
+    description: 'Novo cooler a ar premium com performance excepcional.',
+    content: 'be quiet! lança cooler que combina silêncio e refrigeração potente.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=be%20quiet%20dark%20rock%20elite%20cpu%20cooler&width=800&height=600&seq=news-extra17&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-17',
+    is_featured: false
+  },
+  {
+    id: 'extra18',
+    title: 'Crucial T705: SSD PCIe 5.0 de 14GB/s',
+    description: 'Crucial lança SSD mais rápido do mercado.',
+    content: 'Novo SSD atinge velocidades recordes de leitura e escrita.',
+    category: 'geral',
+    image_url: 'https://readdy.ai/api/search-image?query=crucial%20t705%20pcie%205.0%20ssd%20fastest&width=800&height=600&seq=news-extra18&orientation=landscape',
+    author: 'Claudio Pereira',
+    created_at: '2024-12-17',
+    is_featured: false
+  }
+];
