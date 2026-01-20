@@ -5,54 +5,19 @@ import path from 'path';
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
-
-  // Detectar ambiente de deploy
-  const deployTarget = process.env.DEPLOY_TARGET || 'local';
-  const isGitHub = deployTarget === 'github';
-  const isInfinityFree = deployTarget === 'infinityfree';
   const isProd = mode === 'production';
+  const base = '/'; // usar CNAME / root
 
-  // Base path fixo para GitHub Pages + Local
-  const base = '/'; // **sempre / para GitHub Pages com CNAME**
-
-  console.log('🚀 Vite Config:');
-  console.log(`   Mode: ${mode}`);
-  console.log(`   Deploy Target: ${deployTarget}`);
-  console.log(`   Base Path: ${base}`);
-  console.log(`   Production: ${isProd}`);
+  console.log('VITE: mode=', mode, ' base=', base);
 
   return {
-    plugins: [react()],
-
-    // Base path fixo
     base,
-
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, './src'),
-      },
-    },
-
+    plugins: [react()],
+    resolve: { alias: { '@': path.resolve(__dirname, 'src') } },
     define: {
       __BASE_PATH__: JSON.stringify(base),
-      __PROJECT_ID__: JSON.stringify(env.VITE_PROJECT_ID || ''),
-      __VERSION_ID__: JSON.stringify(env.VITE_VERSION_ID || ''),
-      __READDY_AI_DOMAIN__: JSON.stringify(env.VITE_READDY_AI_DOMAIN || 'https://readdy.ai'),
-      __DEPLOY_TARGET__: JSON.stringify(deployTarget),
       __IS_PRODUCTION__: JSON.stringify(isProd),
-    },
-
-    server: {
-      port: 3000,
-      host: true,
-      open: true,
-      strictPort: false,
-    },
-
-    preview: {
-      port: 4173,
-      host: true,
-      strictPort: false,
+      __PROJECT_ID__: JSON.stringify(env.VITE_PROJECT_ID ?? ''),
     },
 
     build: {
@@ -60,23 +25,15 @@ export default defineConfig(({ mode }) => {
       emptyOutDir: true,
       sourcemap: !isProd,
       minify: isProd ? 'terser' : false,
-      terserOptions: isProd
-        ? {
-            compress: {
-              drop_console: true,
-              drop_debugger: true,
-              pure_funcs: ['console.log', 'console.info', 'console.debug'],
-            },
-            format: { comments: false },
-          }
-        : undefined,
       rollupOptions: {
+        // força o index.html como entry — evita erro "Could not resolve entry module index.html"
+        input: path.resolve(__dirname, 'index.html'),
         output: {
           manualChunks: {
             'react-vendor': ['react', 'react-dom', 'react-router-dom'],
             'supabase-vendor': ['@supabase/supabase-js'],
           },
-          assetFileNames: 'assets/[name]-[hash].[ext]',
+          assetFileNames: 'assets/[name]-[hash][extname]',
           chunkFileNames: 'assets/[name]-[hash].js',
           entryFileNames: 'assets/[name]-[hash].js',
         },
@@ -89,7 +46,6 @@ export default defineConfig(({ mode }) => {
 
     optimizeDeps: {
       include: ['react', 'react-dom', 'react-router-dom', '@supabase/supabase-js'],
-      exclude: [],
     },
   };
 });
