@@ -20,23 +20,30 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node.js (with npm cache)
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --prefer-offline --no-audit --progress=false
 
       - name: Build production
         run: npm run build
         env:
           NODE_ENV: production
+
+      - name: Verify build output (debug)
+        run: |
+          echo "=== Conteúdo do diretório de saída ==="
+          if [ -d out ]; then ls -la out; else echo "OUT DIR NÃO EXISTE"; exit 1; fi
+        shell: bash
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
