@@ -1,4 +1,3 @@
-node_modules/
-dist/
-.vscode/
-*.log
+node_modules/ 
+out/ 
+dist/ 
