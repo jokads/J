@@ -1,0 +1,79 @@
+
+# Apache Configuration for React SPA + WooCommerce Integration
+# Otimizado para InfinityFree Hosting
+
+<IfModule mod_headers.c>
+  # CORS Headers para WooCommerce API (CRÍTICO!)
+  # Permite que joka.ct.ws acesse store.joka.ct.ws
+  Header set Access-Control-Allow-Origin "*"
+  Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+  Header set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
+  Header set Access-Control-Max-Age "3600"
+  
+  # Security Headers
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  
+  # Cache Control
+  <FilesMatch "\.(jpg|jpeg|png|gif|svg|webp|ico)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+  
+  <FilesMatch "\.(woff|woff2|ttf|eot)$">
+    Header set Cache-Control "public, max-age=31536000"
+  </FilesMatch>
+</IfModule>
+
+# Compressão GZIP
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json application/xml
+</IfModule>
+
+# Rewrite Engine para React Router
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # Handle OPTIONS requests for CORS preflight
+  RewriteCond %{REQUEST_METHOD} OPTIONS
+  RewriteRule ^(.*)$ $1 [R=200,L]
+  
+  # Redirecionar todas as requisições para index.html (React SPA)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# Proteção de arquivos sensíveis
+<FilesMatch "^\.">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# Tipos MIME
+<IfModule mod_mime.c>
+  AddType text/css .css
+  AddType text/javascript .js
+  AddType application/json .json
+  AddType image/svg+xml .svg
+  AddType font/woff .woff
+  AddType font/woff2 .woff2
+</IfModule>
+
+# Desabilitar listagem de diretórios
+Options -Indexes
+
+# PHP Settings (se disponível)
+<IfModule mod_php7.c>
+  php_value upload_max_filesize 20M
+  php_value post_max_size 20M
+  php_value max_execution_time 300
+  php_value max_input_time 300
+</IfModule>

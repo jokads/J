@@ -1,0 +1,2 @@
+# Este arquivo previne que o GitHub Pages processe o site com Jekyll
+# Necessário para que arquivos começando com _ sejam servidos corretamente

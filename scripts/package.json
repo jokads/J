@@ -1,0 +1,20 @@
+{
+  "name": "jokatech-woocommerce-scripts",
+  "version": "1.0.0",
+  "description": "Scripts de importação e sincronização para WooCommerce",
+  "scripts": {
+    "import:preview": "node import-products.js --preview",
+    "import:apply": "node import-products.js --apply",
+    "import:update": "node import-products.js --apply --update",
+    "test:api": "bash test-woocommerce-api.sh"
+  },
+  "dependencies": {
+    "woocommerce-api": "^1.5.0",
+    "csv-parser": "^3.0.0",
+    "axios": "^1.6.0",
+    "form-data": "^4.0.0"
+  },
+  "devDependencies": {},
+  "author": "JokaTech",
+  "license": "MIT"
+}
