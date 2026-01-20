@@ -5,19 +5,16 @@ import path from 'path';
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
-  
+
   // Detectar ambiente de deploy
   const deployTarget = process.env.DEPLOY_TARGET || 'local';
   const isGitHub = deployTarget === 'github';
   const isInfinityFree = deployTarget === 'infinityfree';
   const isProd = mode === 'production';
-  
-  // Base path dinâmico
-  // InfinityFree: / (raiz)
-  // GitHub Pages: /A/ (subpasta)
-  // Local: / (raiz)
-  const base = isGitHub ? '/A/' : '/';
-  
+
+  // Base path fixo para GitHub Pages + Local
+  const base = '/'; // **sempre / para GitHub Pages com CNAME**
+
   console.log('🚀 Vite Config:');
   console.log(`   Mode: ${mode}`);
   console.log(`   Deploy Target: ${deployTarget}`);
@@ -25,21 +22,17 @@ export default defineConfig(({ mode }) => {
   console.log(`   Production: ${isProd}`);
 
   return {
-    plugins: [
-      react(),
-    ],
-    
-    // Base path dinâmico por ambiente
+    plugins: [react()],
+
+    // Base path fixo
     base,
-    
-    // Resolver aliases
+
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
       },
     },
-    
-    // Variáveis de ambiente injetadas
+
     define: {
       __BASE_PATH__: JSON.stringify(base),
       __PROJECT_ID__: JSON.stringify(env.VITE_PROJECT_ID || ''),
@@ -48,42 +41,35 @@ export default defineConfig(({ mode }) => {
       __DEPLOY_TARGET__: JSON.stringify(deployTarget),
       __IS_PRODUCTION__: JSON.stringify(isProd),
     },
-    
-    // Configuração do servidor de desenvolvimento
+
     server: {
       port: 3000,
       host: true,
       open: true,
       strictPort: false,
     },
-    
-    // Configuração do preview
+
     preview: {
       port: 4173,
       host: true,
       strictPort: false,
     },
-    
-    // Otimizações de build
+
     build: {
       outDir: 'out',
       emptyOutDir: true,
-      sourcemap: isProd ? false : true,
+      sourcemap: !isProd,
       minify: isProd ? 'terser' : false,
-      
-      // Configuração do Terser para produção
-      terserOptions: isProd ? {
-        compress: {
-          drop_console: true,
-          drop_debugger: true,
-          pure_funcs: ['console.log', 'console.info', 'console.debug'],
-        },
-        format: {
-          comments: false,
-        },
-      } : undefined,
-      
-      // Otimização de chunks
+      terserOptions: isProd
+        ? {
+            compress: {
+              drop_console: true,
+              drop_debugger: true,
+              pure_funcs: ['console.log', 'console.info', 'console.debug'],
+            },
+            format: { comments: false },
+          }
+        : undefined,
       rollupOptions: {
         output: {
           manualChunks: {
@@ -95,17 +81,12 @@ export default defineConfig(({ mode }) => {
           entryFileNames: 'assets/[name]-[hash].js',
         },
       },
-      
-      // Tamanho máximo de chunk (500kb)
       chunkSizeWarningLimit: 500,
-      
-      // Otimizações adicionais
       cssCodeSplit: true,
       assetsInlineLimit: 4096,
       reportCompressedSize: true,
     },
-    
-    // Otimizações de dependências
+
     optimizeDeps: {
       include: ['react', 'react-dom', 'react-router-dom', '@supabase/supabase-js'],
       exclude: [],
